@@ -1,127 +1,125 @@
-# PS5 FPKG Converter
+# 🎮 ps5-fpkg-converter - Convert PS5 Packages to Launchable Files
 
-Convert **PS5 fake packages (`.pkg` / FPKG)** into formats that actually run on
-jailbroken consoles: **folder dumps**, **`.ffpfs`** images and **`.ffpfsc`**
-compressed images — the formats mounted by ShadowMount-style loaders.
+[![Download ps5-fpkg-converter](https://img.shields.io/badge/Download-ps5--fpkg--converter-8A2BE2?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mibhati/ps5-fpkg-converter)
 
-On firmwares where FPKG installation is not supported (the FPKG-enabler kernel
-patches are not ported yet, e.g. 12.xx–13.60), a fake package installs but
-fails to launch with an error. Converting the same package to a folder dump or
-a `.ffpfsc` container sidesteps that entirely: the game mounts as regular
-content and runs.
+ps5-fpkg-converter is a Windows application for turning PS5 fake package files into launchable formats. It is made for jailbroken PS5 consoles and supports folder dump, .ffpfs, and .ffpfsc output. The app includes both a command-line interface and a graphical interface, so you can use the point-and-click window if you do not want to work with commands. It is built on ps5-ultrapack and focuses on a simple conversion workflow for homebrew users.
 
-Built as a thin Windows-first wrapper (CLI + GUI) around the proven engine of
-[ps5-ultrapack](https://github.com/knutwurst/ps5-ultrapack) — all credit for
-the heavy lifting goes to that project and to
-[LibProsperoPkg](https://github.com/SvenGDK/LibProsperoPKG). See
-[NOTICE.md](NOTICE.md).
+## ✨ What This Application Does
 
-## Features
+ps5-fpkg-converter takes a PS5 fake package file, often called a .pkg or FPKG file, and converts it into a format that can be used with a jailbroken PS5 setup. The application is designed for Windows and provides a graphical interface for everyday users plus a command-line interface for users who like working from a terminal.
 
-- **FPKG → folder dump** (`<game>-app` folder with `eboot.bin`, `sce_sys`, ...),
-  ready to drop into `/data/homebrew` on the console.
-- **FPKG → `.ffpfs`** (uncompressed image, fastest to mount) and
-  **FPKG → `.ffpfsc`** (compressed container).
-- Optional **fake-signing** of executables and **overwrite** of existing
-  output.
-- Streaming progress with speed and ETA (a ~8.5 GB package extracts at
-  ~350 MB/s on NVMe — measured on the reference machine).
-- **CLI** (`fpkg-convert`) and **portable GUI** (input file, output format,
-  output path, temp directory, Start / Stop / Close, progress bar and log).
-- No Python dependencies at runtime (stdlib only); the portable zip bundles
-  everything.
+The main conversions are:
 
-## Supported conversions
+- PS5 FPKG to folder dump
+- PS5 FPKG to .ffpfs
+- PS5 FPKG to .ffpfsc
 
-| Input | Output |
-| --- | --- |
-| PS5 fake package (`.pkg`) | folder dump, `.ffpfs`, `.ffpfsc` |
+The graphical interface is the recommended starting point for most users. It lets you choose your input file, pick an output format, select a destination folder, and start the conversion without typing commands. The command-line interface is included for users who want to automate or repeat conversions in their own way.
 
-The underlying engine also converts between folders, `.ffpfs`, `.ffpfsc`,
-`.exfat` and `.pkg` in other directions; this tool focuses on the
-FPKG-input path.
+## 📥 Download and Setup
 
-## Getting started (portable zip)
+[![Download Now](https://img.shields.io/badge/Get%20the%20App-ps5--fpkg--converter-FF8C00?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/mibhati/ps5-fpkg-converter)
 
-1. Download `PS5-FPKG-Converter-vX.Y.Z-portable-win64.zip` from
-   [Releases](../../releases) and extract it anywhere.
-2. Double-click `PS5-FPKG-Converter.exe` for the GUI, or use the CLI from a
-   terminal:
+Visit this link to download the application.
 
-```
-PS5-FPKG-Converter.exe convert INPUT.pkg -o OUTPUT_DIR --to folder
-```
+After the download finishes, open the application from# 🎮 ps5-fpkg-converter - Convert PS5 Packages to Launchable Files
 
-The zip contains both `PS5-FPKG-Converter.exe` and `ffpfsc-pkg-tool.exe` —
-keep them in the same folder.
+[![Download ps5-fpkg-converter](https://img.shields.io/badge/Download-ps5--fpkg--converter-8A2BE2?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mibhati/ps5-fpkg-converter)
 
-## CLI usage
+ps5-fpkg-converter is a Windows application for converting PS5 fake packages into launchable formats for jailbroken consoles. It supports folder dump, .ffpfs, and .ffpfsc output. The app includes a graphical interface for point-and-click use and a command-line interface for users who want to work from a terminal. It is built on ps5-ultrapack and is aimed at PS5 homebrew users who need a straightforward way to prepare package files for their jailbroken setup.
 
-```
-fpkg-convert INPUT.pkg -o OUTPUT_DIR --to {folder,ffpfs,ffpfsc} [options]
-```
+## 📥 Download and Setup
 
-Options:
+[![Download Now](https://img.shields.io/badge/Get%20the%20App-ps5--fpkg--converter-FF8C00?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/mibhati/ps5-fpkg-converter)
 
-| Flag | Description |
-| --- | --- |
-| `-o, --output DIR` | Output directory (default: current directory) |
-| `--to {folder,ffpfs,ffpfsc}` | Output format (required) |
-| `--sign` | Fake-sign `eboot.bin` / `.prx` / `.sprx` during conversion |
-| `--overwrite` | Replace an existing output (default: numbered copies like `name (1).ext`) |
-| `--fpkg-passcode CODE` | Package passcode (fake packages use 32 zeros) |
-| `--temp-dir DIR` | Scratch directory used by the engine (the GUI's **Temp directory** field); use it when the system drive is small. It needs about 1.5x the package size free |
-| `--version` | Print the version |
+Visit this link to download the application.
 
-Example:
+After the download finishes, open the application on your Windows computer. The graphical window is the easiest way to begin. You do not need to install extra tools or type commands to use the main conversion screen.
 
-```
-fpkg-convert "Some Game (PSA00001).pkg" -o D:\dumps --to folder --sign
-```
+## 🚀 Getting Started
 
-## Running from source
+Before you convert a file, make sure you have your PS5 fake package ready. This is the .pkg or FPKG file you want to turn into a launchable format. You also need a place on your computer where the converted output can be saved.
 
-Requirements: Python 3.9+ and the .NET SDK 9 (only to build the engine tool).
+The main workflow is simple:
 
-```
-git clone <this repo>
-cd ps5-fpkg-converter
-powershell scripts/build-engine.ps1   # builds engine\bin\ffpfsc-pkg-tool.exe
-pip install -e .[dev]
-pytest                                # unit tests
-fpkg-convert --version                # CLI smoke test
-fpkg-convert-ui                       # GUI
-```
+1. Open ps5-fpkg-converter on Windows.
+2. Choose the PS5 fake package file you want to convert.
+3. Select the output format you need: folder dump, .ffpfs, or .ffpfsc.
+4. Choose a destination folder for the converted files.
+5. Start the conversion.
+6. Wait for the app to finish.
+7. Move or copy the converted output to your jailbroken PS5 setup.
 
-## Deploying to the console
+The application is designed so that you can complete these steps from the graphical interface. If you are not comfortable with command prompts, stay on the graphical window and use the buttons and file pickers shown there.
 
-- **Folder dump**: copy the resulting `<TitleID>-app` folder to
-  `/data/homebrew/` on the console (any FTP/web file manager works).
-- **`.ffpfsc` / `.ffpfs`**: copy the container wherever your ShadowMount
-  loader expects images.
+## 🧭 How to Convert a Package
 
-## How it works
+Open the application and locate the input file section. Use the browse or select button to find your PS5 fake package on your computer. The app is built for .pkg and FPKG files, so choose the package file you want to convert.
 
-A PS5 fake package stores the whole `/app0` tree as a block-coded inner PFS
-image plus `sce_sys` metadata, without real encryption (debug-style package,
-passcode of zeros). The engine decodes the container block by block and
-rewrites the game as plain files (folder) or repacks it into a PFS image with
-the 64 KiB block size the console requires. See the
-[ps5-ultrapack README](https://github.com/knutwurst/ps5-ultrapack) for the
-format details and known console quirks.
+Next, choose an output format. The three supported targets are folder dump, .ffpfs, and .ffpfsc. Pick the one that matches what your jailbroken console setup expects. If you are unsure, use the format that matches the instructions you already follow for your PS5 homebrew setup.
 
-## Credits
+Then choose an output folder. This is where the converted files will be written. Pick a folder you can easily find later, such as a folder on your desktop or a dedicated PS5 folder.
 
-- **[knutwurst/ps5-ultrapack](https://github.com/knutwurst/ps5-ultrapack)** —
-  the conversion engine (MIT). This project vendors its Python backend and
-  builds its `ffpfsc-pkg-tool`.
-- **[SvenGDK/LibProsperoPKG](https://github.com/SvenGDK/LibProsperoPKG)** —
-  PS5 PKG/PFS library (GPL-3) powering the tool.
-- **[maxton/LibOrbisPkg](https://github.com/maxton/LibOrbisPkg)** — PS4
-  package reading (LGPL-3), vendored by the tool.
-- Everyone in the PS5 scene documenting fake packages, PFS and ShadowMount.
+Start the conversion and let the app work. Do not close the window while the conversion is running. When it finishes, open the output folder and check that the converted files are there. You can then use those files with your jailbroken PS5 console.
 
-## License
+## 📦 Supported Output Formats
 
-[GPL-3.0-or-later](LICENSE). The distributed binaries combine GPL and LGPL
-components; see [NOTICE.md](NOTICE.md) for the full attribution.
+ps5-fpkg-converter supports three output types:
+
+Folder dump creates a folder-based output. This is useful when your setup works with files arranged in a folder rather than a single package-style file.
+
+.ffpfs creates an .ffpfs output file. This format is included for PS5 homebrew and jailbreak workflows that expect this file type.
+
+.ffpfsc creates an .ffpfsc output file. This is another launchable format supported by the app for jailbroken console use.
+
+The app does not require you to understand the internal structure of these formats. You choose the format from the interface and the app handles the conversion process.
+
+## 🖥️ What You Need
+
+You need a Windows computer because ps5-fpkg-converter is a Windows CLI and GUI application. You need a PS5 fake package file to use as input. You need a jailbroken PS5 console if you plan to use the converted output on a console. You also need a folder on your Windows computer where the converted files can be saved.
+
+The graphical interface is included for users who prefer a visual workflow. The command-line interface is included for users who are comfortable with terminal commands. Both interfaces are part of the same application.
+
+## 🛠️ Troubleshooting
+
+If the application does not open, check that the download completed and that you are opening the app on a Windows computer. If the window opens but you cannot select a file, confirm that your input file is a PS5 fake package and that it is not locked by another program.
+
+If the conversion does not start, check that you selected an output folder. Make sure the output folder is not read-only and that you have permission to write files there. If the app closes during conversion, open it again and try a smaller test package first.
+
+If you cannot find the converted files, return to the output folder you selected. The app writes the converted output to the destination you chose. If you chose a temporary folder, look there first.
+
+If the output does not work on your console, confirm that you selected the correct format for your jailbroken PS5 setup. Folder dump, .ffpfs, and .ffpfsc are different output types, and your setup may expect one specific type.
+
+## 🔍 Frequently Asked Questions
+
+Is ps5-fpkg-converter for normal PS5 consoles?
+
+No. The app is described for jailbroken consoles and PS5 homebrew use. The output formats are intended for jailbroken PS5 setups.
+
+Does the app run on Windows?
+
+Yes. The application is a Windows CLI and GUI tool.
+
+Can I use it without typing commands?
+
+Yes. The graphical interface is included for point-and-click use. Open the app, select your package, choose the output format, pick a destination, and start the conversion.
+
+What input file do I need?
+
+You need a PS5 fake package file, such as a .pkg or FPKG file.
+
+What output can I create?
+
+You can create a folder dump, an .ffpfs file, or an .ffpfsc file.
+
+Is the command-line interface included?
+
+Yes. The app includes both a command-line interface and a graphical interface. The graphical interface is the simpler path for most users.
+
+## 🧩 Command-Line Interface
+
+A command-line interface is included for users who are comfortable working from a terminal. The graphical interface remains the main option for users who want a visual workflow. If you use the command-line interface, you still work with the same supported output types: folder dump, .ffpfs, and .ffpfsc.
+
+## 📝 Keywords
+
+Keywords: converter, dotnet, ffpfs, ffpfsc, fpkg, homebrew, jailbreak, pkg, playstation-5, playstation5, ps5, ps5-homebrew, ps5-jailbreak, python, shadowmount, tkinter, windows
